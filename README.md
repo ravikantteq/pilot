@@ -1,2 +1,2 @@
 # pilot
-codes for starting practising various topics
+codes while practising various topics
