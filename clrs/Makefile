@@ -1,4 +1,4 @@
-TARGET ?= parking_lot
+TARGET ?= output 
 
 SRC_DIR ?= src
 BIN_DIR ?= bin
