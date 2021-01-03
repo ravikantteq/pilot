@@ -18,7 +18,6 @@ class TestInsertionSorter : public ::testing::Test {
 TEST_F(TestInsertionSorter, sortNumbers){
     vector<int> A = {3, 2, 6, 4, 5, 1};
     InsertionSorter::sort(A);
-    cout << A[0] << endl;
     vector<int> sorted_A = {1, 2, 3, 4, 5, 6};
     EXPECT_EQ(A, sorted_A);
 }
