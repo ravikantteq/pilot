@@ -18,8 +18,9 @@ class Graph {
         int get_vertices_count();
         std::vector<Vertex>& get_vertices();
         Vertex& get_vertex(int index);
-        bool is_connected(Vertex& from, Vertex& to);
+        bool is_connected(int from, int to);
         void add_edge(Vertex& from, Vertex& to, int weight);
+        WeightedEdge get_edge(int from, int to);
         std::list<WeightedEdge>& get_edges(Vertex& v);
 };
 

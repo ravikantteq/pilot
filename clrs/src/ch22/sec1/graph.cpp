@@ -1,5 +1,7 @@
-#include "graph.h"
+#include <limits.h>
+#include<iostream>
 #include <stdexcept>
+#include "graph.h"
 
 using namespace std;
 
@@ -38,4 +40,22 @@ list<WeightedEdge>& Graph::get_edges(Vertex& v) {
     int index  = v.get_index();
     validate(index);
     return adj[index];
+}
+
+WeightedEdge Graph::get_edge(int from, int to) {
+    validate(from);
+    validate(to);
+    for (auto edge: adj[from]) {
+        if (edge.get_to().get_index() == to) return edge;
+    }
+    throw out_of_range("edge doesnt exist");
+}
+
+bool Graph::is_connected(int ui, int vi) {
+    validate(ui);
+    validate(vi);
+    for (auto edge: adj[ui]) {
+        if (edge.get_to().get_index() == vi) return true;
+    }
+    return false;
 }
