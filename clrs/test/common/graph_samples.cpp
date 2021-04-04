@@ -1,5 +1,7 @@
 #include "ch22/sec1/graph.h"
 
+void bi_direction_add_edge(Graph& graph, int from, int to, int weight);
+
 Graph sample_directed() {
     Graph graph(6);
     graph.add_edge(graph.get_vertex(0), graph.get_vertex(1), 1);
@@ -11,8 +13,8 @@ Graph sample_directed() {
     graph.add_edge(graph.get_vertex(0), graph.get_vertex(1), 1);
     return graph;
 }
-/*
-Graph& sample_weighted_graph() {
+
+Graph sample_weighted_graph() {
     Graph graph(9);
     bi_direction_add_edge(graph, 0, 1, 4);
     bi_direction_add_edge(graph, 0, 7, 8);
@@ -33,8 +35,8 @@ Graph& sample_weighted_graph() {
 }
 
 void bi_direction_add_edge(Graph& graph, int from, int to, int weight) {
-    int v1 = graph.get_vertex(from);
-    int v2 = graph.get_vertex(to);
+    Vertex& v1 = graph.get_vertex(from);
+    Vertex& v2 = graph.get_vertex(to);
     graph.add_edge(v1, v2, weight);
     graph.add_edge(v2, v1, weight);
-}*/
+}
