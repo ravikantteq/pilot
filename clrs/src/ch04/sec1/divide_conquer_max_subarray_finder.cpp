@@ -19,13 +19,10 @@ SubArray DivideConquerMaxSubArrayFinder::divide_conquer_find(vector<int> arr, in
         SubArray cross_subarr = DivideConquerMaxSubArrayFinder::find_max_crossing_subarray(arr, low, mid, high);
         if (left_subarr.sum >= right_subarr.sum && left_subarr.sum >= cross_subarr.sum){
             res = left_subarr;
-            cout << "a" << res.sum;
         } else if(right_subarr.sum >= right_subarr.sum && right_subarr.sum >= cross_subarr.sum) {
             res = right_subarr;
-            cout <<  "b" << res.sum;
         } else {
             res = cross_subarr;
-            cout << "c" << res.sum;
         }
     }
     return res;
