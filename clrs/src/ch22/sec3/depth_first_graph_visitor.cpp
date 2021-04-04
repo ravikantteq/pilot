@@ -9,7 +9,7 @@ DepthFirstGraphVisitor::DepthFirstGraphVisitor() {}
 DepthFirstGraphVisitor::DepthFirstGraphVisitor(int v) : parent(v), d(v), f(v), color(v) {}
 
 void DepthFirstGraphVisitor::before_exploration(Graph& graph, Vertex& v) {}
-void DepthFirstGraphVisitor::after_exploration(Graph& graph, Vertex& v) { cout << "hello"; }
+void DepthFirstGraphVisitor::after_exploration(Graph& graph, Vertex& v) {}
 
 void DepthFirstGraphVisitor::visit(Graph& graph) {
     vector<Vertex>& vertices = graph.get_vertices();
