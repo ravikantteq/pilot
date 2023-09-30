@@ -1,0 +1,17 @@
+#include <iostream>
+#include <vector>
+#include "insertion_sorter.h"
+
+using namespace std;
+
+void InsertionSorter::sort(vector<int>& A) {
+    for (int j = 1; j < A.size(); j++) {
+        int key = A[j];
+        int i = j - 1;
+        while (i >= 0 && A[i] > key) {
+            A[i+1] = A[i];
+            i--;
+        }
+        A[i+1] = key;
+    }
+}

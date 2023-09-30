@@ -1,0 +1,41 @@
+TARGET ?= testall
+
+SRC_DIR ?= src
+BIN_DIR ?= bin
+BUILD_DIR ?= build
+TEST_DIR ?= test
+.DEFAULT_GOAL := $(TARGET)
+
+CXX = g++
+
+GOOGLE_TEST_LIB = gtest
+GOOGLE_TEST_INCLUDE = /usr/local/include
+
+CXXFLAGS = -c -I $(GOOGLE_TEST_INCLUDE)
+LD_FLAGS = -L /usr/local/lib -l$(GOOGLE_TEST_LIB) -lpthread
+
+SRCS := $(shell find $(SRC_DIR) -name *.cpp -and -not -name main.cpp) $(shell find $(TEST_DIR) -name *.cpp) 
+ 
+INCS := -I$(SRC_DIR)/ -I$(TEST_DIR)/
+OBJS := $(SRCS:%=$(BUILD_DIR)/%.o) 
+DEPS := $(OBJS:.o=.d)
+
+test: clean $(TARGET)
+	./$(TARGET)
+	make -f makefile.test clean
+
+$(TARGET): $(OBJS)
+	@$(CXX) $(OBJS) -o $@ $(LD_FLAGS)
+	@echo "[SUCCESS] Build." 
+
+$(BUILD_DIR)/%.cpp.o : %.cpp
+	@$(MKDIR_P) $(dir $@)
+	@$(CXX) $(CXXFLAGS) $< -o $@ $(INCS) $(LD_FLAGS)
+
+clean:
+	@rm -f $(TARGET)
+	@rm -f $(BUILD_DIR)/*.o
+	@echo "[SUCCESS] test clean."
+
+MKDIR_P ?= mkdir -p
+-include $(DEPS)
